@@ -1,0 +1,19 @@
+{
+  "name": "virtual_doctor",
+  "version": "1.0.0",
+  "description": "An app for the people who need a treatment, advices against the fight against depression",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/alinaberlin/virtual_doctor.git"
+  },
+  "author": "Alina Ghetler",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/alinaberlin/virtual_doctor/issues"
+  },
+  "homepage": "https://github.com/alinaberlin/virtual_doctor#readme"
+}
