@@ -1,0 +1,44 @@
+@startuml classes_diagram
+
+class User{
+    firstName: string
+    lastName: string
+    email:string
+    password: string
+    phoneNumber:string
+    type:string
+}
+class PaymentDetails{
+    address: string
+    name:string
+    paymentReference:string
+    type:string
+    expiringMonth:integer
+    expiringYear:integer
+    lastFourDigits:string
+    patient:User
+}
+    class Appointment{
+    startTime:date
+    duration:integer
+    type: string
+    doctor:User
+    patient:User
+}
+
+class Session{
+    appointment: Appointment
+}
+class Invoice {
+    paymentDetails:PaymentDetails
+    grossValue: double
+    taxValue: double
+    date:date
+    session:Session
+}
+User *-- Appointment
+User *-- PaymentDetails
+Appointment *-- Session
+Session *-- Invoice
+PaymentDetails *-- Invoice
+@enduml
