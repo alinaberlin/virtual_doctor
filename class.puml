@@ -36,9 +36,9 @@ class Invoice {
     date:date
     session:Session
 }
-User *-- Appointment
-User *-- PaymentDetails
-Appointment *-- Session
-Session *-- Invoice
-PaymentDetails *-- Invoice
+User --* Appointment
+User --* PaymentDetails
+Appointment --* Session
+Session --* Invoice
+Invoice *-- PaymentDetails
 @enduml
