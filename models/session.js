@@ -1,7 +1,8 @@
 class Session {
-  constructor(appoitment) {
+  constructor(id, appoitment) {
+    this.id = id
     this.appoitment = appoitment
   }
 }
 
-module.exports =Session
+module.exports = Session

@@ -1,6 +1,7 @@
 @startuml classes_diagram
 
 class User{
+    id:string
     firstName: string
     lastName: string
     email:string
@@ -19,6 +20,7 @@ class PaymentDetails{
     patient:User
 }
     class Appointment{
+    id:string
     startTime:date
     duration:integer
     type: string
@@ -27,9 +29,11 @@ class PaymentDetails{
 }
 
 class Session{
+    id:string
     appointment: Appointment
 }
 class Invoice {
+    id:string
     paymentDetails:PaymentDetails
     grossValue: double
     taxValue: double

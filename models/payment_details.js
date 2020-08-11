@@ -1,5 +1,6 @@
 class PaymentDetails {
-  constructor(address, name, paymentReference, type, expiringMonth, expiringYear, lastFourDigits, patient) {
+  constructor(id, address, name, paymentReference, type, expiringMonth, expiringYear, lastFourDigits, patient) {
+    this.id = id
     this.address = address
     this.name = name
     this.paymentReference = paymentReference
@@ -8,6 +9,11 @@ class PaymentDetails {
     this.expiringYear = expiringYear
     this.lastFourDigits = lastFourDigits
     this.patient = patient
+    this.invoices = []
+  }
+
+  createInvoice(invoice) {
+    this.invoices.push(invoice)
   }
 }
 module.exports = PaymentDetails
