@@ -1,17 +1,48 @@
-class Appoitment {
-  constructor(id, startTime, duration, type, doctor, patient) {
-    this.id = id
-    this.startTime = startTime
-    this.duration = duration
-    this.type = type
-    this.doctor = doctor
-    this.patient = patient
-  }
+const mongoose = require('mongoose')
+const autopopulate = require('mongoose-autopopulate')
 
-  cancelAppointment() {
-    this.doctor.appointments = this.doctor.appointments.filter(el => el.id !== this.id)
-    this.patient.appointments = this.patient.appointments.filter(el => el.id !== this.id)
-  }
-}
+
+const appointmentSchema = new mongoose.Schema({
+  name: {
+    type: String,
+    unique: true,
+    required: true,
+  },
+  startTime: {
+    type: Date,
+    required: true,
+  },
+  duration: Number,
+  type: {
+    type: String,
+    required: true,
+  },
+  doctor: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'User',
+  },
+  patient: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'User',
+  },
+})
+
+const Appointment = mongoose.model('Appointment', appointmentSchema)
+module.exports = Appointment
+// class Appoitment {
+//   constructor(id, startTime, duration, type, doctor, patient) {
+//     this.id = id
+//     this.startTime = startTime
+//     this.duration = duration
+//     this.type = type
+//     this.doctor = doctor
+//     this.patient = patient
+//   }
+
+//   cancelAppointment() {
+//     this.doctor.appointments = this.doctor.appointments.filter(el => el.id !== this.id)
+//     this.patient.appointments = this.patient.appointments.filter(el => el.id !== this.id)
+//   }
+// }
 
 module.exports = Appoitment
