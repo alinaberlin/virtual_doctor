@@ -1,7 +1,6 @@
 const mongoose = require('mongoose')
 const autopopulate = require('mongoose-autopopulate')
 
-
 const appointmentSchema = new mongoose.Schema({
   name: {
     type: String,
@@ -20,12 +19,12 @@ const appointmentSchema = new mongoose.Schema({
   doctor: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'User',
-    autopopulate:true
+    autopopulate: true,
   },
   patient: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'User',
-    autopopulate:true
+    autopopulate: true,
   },
 })
 
@@ -47,5 +46,3 @@ module.exports = Appointment
 //     this.patient.appointments = this.patient.appointments.filter(el => el.id !== this.id)
 //   }
 // }
-
-module.exports = Appoitment
