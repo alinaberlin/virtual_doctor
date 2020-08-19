@@ -2,7 +2,7 @@ const express = require('express')
 
 const router = express.Router()
 
-/* GET users listing. */
+/* GET session. */
 router.get('/',  (req, res) => {
   res.send('send a session')
 })

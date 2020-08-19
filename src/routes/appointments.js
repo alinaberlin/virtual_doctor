@@ -1,9 +1,10 @@
-var express = require('express')
-var router = express.Router()
+const express = require('express')
+
+const router = express.Router()
 
 /* GET users listing. */
-router.get('/', function (req, res, next) {
-  res.send('send a appoitment')
+router.get('/', async(req, res)=> {
+   res.send('send a appoitment')
 })
 
 module.exports = router
