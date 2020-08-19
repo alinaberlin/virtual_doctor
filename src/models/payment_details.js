@@ -34,8 +34,10 @@ const paymentDetails = new mongoose.Schema({
   patient: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'User',
+    autopopulate:true
   },
 })
+paymentDetails.plugin(autopopulate)
 const PaymentDetails = mongoose.model('PaymentDetails', paymentDetails)
 module.exports = PaymentDetails
 // class PaymentDetails {

@@ -5,7 +5,7 @@ const autopopulate = require('mongoose-autopopulate')
 const session = new mongoose.Schema({
   appointment: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: 'appointment',
+    ref: 'Appointment',
   }
 })
 

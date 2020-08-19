@@ -1,4 +1,5 @@
 const mongoose = require('mongoose')
+
 const autopopulate = require('mongoose-autopopulate')
 
 
@@ -28,6 +29,7 @@ const user = new mongoose.Schema({
     required:true
   }
 })
+user.plugin(autopopulate)
 const User = mongoose.model('User', user)
 module.exports = User
 

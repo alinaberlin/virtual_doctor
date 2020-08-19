@@ -20,13 +20,16 @@ const appointmentSchema = new mongoose.Schema({
   doctor: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'User',
+    autopopulate:true
   },
   patient: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'User',
+    autopopulate:true
   },
 })
 
+appointmentSchema.plugin(autopopulate)
 const Appointment = mongoose.model('Appointment', appointmentSchema)
 module.exports = Appointment
 // class Appoitment {

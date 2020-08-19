@@ -4,6 +4,7 @@
   "description": "An app for the people who need a treatment, advices against the fight against depression",
   "scripts": {
     "start": "node ./bin/www",
+    "startDev": "nodemon ./bin/www",
     "test": "echo \"Error: no test specified\" && exit 1",
     "lint": "lint-staged"
   },
