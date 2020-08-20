@@ -1,5 +1,6 @@
 
 const mongoose = require('mongoose')
+
 const autopopulate = require('mongoose-autopopulate')
 
 const session = new mongoose.Schema({
@@ -8,6 +9,8 @@ const session = new mongoose.Schema({
     ref: 'Appointment',
   }
 })
+
+session.plugin(autopopulate)
 
 const Session = mongoose.model('Session', session)
 module.exports = Session
