@@ -11,7 +11,7 @@ router.get('/', async (req, res) => {
   }
   await res.send('send a session')
 })
-/* Post create a session */
+/* Post create a  */
 router.post('/', async(req, res) => {
   const createSession = await Session.create(req.body)
   res.send(createSession)
