@@ -14,7 +14,7 @@ const invoiceSchema = new mongoose.Schema({
     unique: true
   },
   status: {
-    type: Boolean,
+    type: String,
     required: true
   },
   grossValue: {
