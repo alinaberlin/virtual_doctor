@@ -1,0 +1,15 @@
+services:
+    app:
+        image: virtual_doctor
+        build:
+            context: .
+            dockerfile: Dockerfile
+        enviroment:
+            -MONGODB_USERNAME
+            -MONGODB_PASSWORD
+            -MONGODB_DATABASE
+        ports:
+            3000:3000
+            35729:35729
+        volumes:
+            - ./src:/app/src
