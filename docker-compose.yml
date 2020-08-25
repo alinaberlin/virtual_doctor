@@ -1,0 +1,18 @@
+version: '3'
+services:
+    app:
+        image: virtual_doctor
+        build:
+            context: .
+            dockerfile: Dockerfile
+        environment:
+            - MONGODB_USERNAME
+            - MONGODB_PASSWORD
+            - MONGODB_DATABASE=alina
+            - MONGODB_HOST=host.docker.internal
+            - MONGODB_REMOTE=1
+        ports:
+            - 3000:3000
+            - 35729:35729
+        volumes:
+            - ./src:/app/src
