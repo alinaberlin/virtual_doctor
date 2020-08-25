@@ -1,11 +1,10 @@
-<template>
-  <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
-    <router-view />
-  </div>
+<template lang="pug">
+  #app
+    h1 Virtual doctor
+    #nav
+      router-link(to="/") Home |&nbsp;
+      router-link(to="/about") About
+    router-view
 </template>
 
 <style lang="scss">
