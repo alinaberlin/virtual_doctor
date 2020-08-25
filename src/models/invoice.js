@@ -14,7 +14,7 @@ const invoiceSchema = new mongoose.Schema({
     unique: true
   },
   status: {
-    type: Boolean,
+    type: String,
     required: true
   },
   grossValue: {
@@ -26,14 +26,17 @@ const invoiceSchema = new mongoose.Schema({
     required:true
   },
   date: {
-    type: Data,
+    type: Date,
     required:true
   },
   session: {
-    type: String,
-    required:true
+    type: mongoose.Schema.Types.ObjectId,
+    ref:'Session',
+   autopopulate:true
   }
 })
+invoiceSchema.plugin(autopopulate)
+
 const Invoice = mongoose.model('Invoice', invoiceSchema)
 module.exports = Invoice
 // class Invoice {
