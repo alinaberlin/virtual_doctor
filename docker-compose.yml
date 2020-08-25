@@ -1,9 +1,18 @@
-version: '3'
+version: "3"
 services:
-    app:
-        image: virtual_doctor
+    frontend:
+        image: frontend
         build:
-            context: .
+            context: frontend
+            dockerfile: Dockerfile
+        ports:
+            - 8080:8080
+        volumes:
+            - ./frontend/src:/app/src
+    backend:
+        image: backend
+        build:
+            context: backend
             dockerfile: Dockerfile
         environment:
             - MONGODB_USERNAME
@@ -11,8 +20,13 @@ services:
             - MONGODB_DATABASE=alina
             - MONGODB_HOST=host.docker.internal
             - MONGODB_REMOTE=1
+            - MONGODB_CONNECTION_STRING=mongodb://mongo/virtual_doctor
         ports:
             - 3000:3000
             - 35729:35729
         volumes:
-            - ./src:/app/src
+            - ./backend/src:/app/src
+    mongo:
+        image: mongo
+        ports:
+            - 27017:27017
