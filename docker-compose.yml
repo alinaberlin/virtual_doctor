@@ -5,8 +5,12 @@ services:
         build:
             context: frontend
             dockerfile: Dockerfile
+        labels:
+            - 'traefik.enable=true'
+            - 'traefik.http.routers.frontend.rule=Host(`virtualdoctor.localhost`)'
+            - 'traefik.http.routers.frontend.entrypoints=web'
         ports:
-            - 8080:8080
+            - 8080
         volumes:
             - ./frontend/src:/app/src
     backend:
@@ -21,8 +25,12 @@ services:
             - MONGODB_HOST=host.docker.internal
             - MONGODB_REMOTE=1
             - MONGODB_CONNECTION_STRING=mongodb://mongo/virtual_doctor
+        labels:
+            - 'traefik.enable=true'
+            - 'traefik.http.routers.backend.rule=(Host(`virtualdoctor.localhost`) && PathPrefix(`/api`))'
+            - 'traefik.http.routers.backend.entrypoints=web'
         ports:
-            - 3000:3000
+            - 3000
             - 35729:35729
         volumes:
             - ./backend/src:/app/src
@@ -30,3 +38,15 @@ services:
         image: mongo
         ports:
             - 27017:27017
+    load-balancer:
+        image: traefik:v2.2
+        command:
+            - '--api.insecure=true'
+            - '--providers.docker=true'
+            - '--providers.docker.exposedbydefault=false'
+            - '--entrypoints.web.address=:80'
+        ports:
+        - '80:80'
+        - '8080:8080'
+        volumes:
+        - '/var/run/docker.sock:/var/run/docker.sock:ro'
