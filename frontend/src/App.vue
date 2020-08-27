@@ -1,8 +1,7 @@
 <template lang="pug">
   #app
-    h1 Virtual doctor
     #nav
-      router-link(to="/") Home |&nbsp;
+      router-link(to="/") User |&nbsp;
       router-link(to="/about") About
     router-view
 </template>
