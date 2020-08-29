@@ -1,13 +1,13 @@
 <script>
 export default {
-  name: 'Appointment',
+  name: 'AppointmentCard',
   props: ['appointment']
 }
 </script>
 
 <template lang="pug">
 .box
-  h1 {{name }}
+  h1 {{appointment.name }}
 </template>
 
 <style lang="scss" scoped>
