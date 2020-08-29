@@ -1,8 +1,7 @@
 <template lang="pug">
   #app
     #nav
-      router-link(to="/") User |&nbsp;
-      router-link(to="/about") About
+      router-link(to="/") User
     router-view
 </template>
 
