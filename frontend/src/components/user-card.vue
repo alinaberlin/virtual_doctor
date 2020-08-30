@@ -1,7 +1,7 @@
 <script>
 export default {
   name: 'UserCard',
-  props: ['user'],
+  props: ['user']
 }
 </script>
 

@@ -34,7 +34,7 @@ app.use(cookieParser())
 app.use(express.static(path.join(__dirname, 'public')))
 
 app.use('/api/', indexRouter)
-app.use('/api/users/', usersRouter)
+app.use('/api/users', usersRouter)
 app.use('/api/appointment', appointmentRouter)
 app.use('/api/session', sessionRouter)
 
