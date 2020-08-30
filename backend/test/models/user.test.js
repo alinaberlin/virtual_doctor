@@ -8,6 +8,10 @@ describe('User Crud Test Suite', () => {
     await importUsers()
   })
 
+  afterAll(async () => {
+    await User.deleteMany({})
+  })
+
   test('Should find user by email', async () => {
     const userToFind = await User.find({ email: 'john@mail.de' })
     expect(JSON.parse(JSON.stringify(userToFind[0]))).toStrictEqual(
@@ -20,7 +24,7 @@ describe('User Crud Test Suite', () => {
           phoneNumber: 123,
           type: 'doctor',
           _id: userToFind[0]._id,
-          __v: userToFind[0].__v
+          __v: userToFind[0].__v,
         })
       )
     )
