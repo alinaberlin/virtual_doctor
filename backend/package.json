@@ -5,7 +5,7 @@
   "scripts": {
     "start": "node ./bin/www",
     "startDev": "nodemon ./bin/www",
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "jest",
     "lint": "lint-staged"
   },
   "repository": {
@@ -38,8 +38,7 @@
     "eslint-plugin-react-hooks": "^4.0.0",
     "husky": "^4.2.5",
     "jest": "^26.4.2",
-    "lint-staged": "^10.2.11",
-    "mongo-seeding": "^3.4.1"
+    "lint-staged": "^10.2.11"
   },
   "husky": {
     "hooks": {
