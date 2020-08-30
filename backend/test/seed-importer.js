@@ -1,11 +1,18 @@
-const User =  require('../src/models/user')
+/* eslint-disable no-underscore-dangle */
+const User = require('../src/models/user')
+const Appointment =  require('../src/models/appointment')
 
-const userData = require('./seeds/users')
+const { users, appointment } = require('./seeds/users')
 
-const importUsers = () => {
+const importUsers = async () => {
     const promises = []
-    userData.forEach(user => promises.push(User.create(user)))
-    return Promise.all(promises)
+    users.forEach(user => promises.push(User.create(user)))
+    const savedUsers = await Promise.all(promises)
+    const idDoctor = savedUsers.filter(user => user.type === 'doctor')[0]._id
+    const idPatient = savedUsers.filter(user => user.type === 'patient')[0]._id
+    appointment.doctor = idDoctor
+    appointment.patient = idPatient
+    await Appointment.create(appointment)
 }
 
 module.exports = { importUsers }

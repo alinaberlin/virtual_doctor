@@ -24,6 +24,11 @@ const users = [
     type: 'patient',
   },
 ]
+ const appointment = {
+   name: 'Establish Diagnosis',
+   startTime: '12/20/2020',
+   duration: 10,
+   type: 'consultation'
+ }
 
-
-module.exports = users
+module.exports = { users, appointment }
