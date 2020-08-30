@@ -3,6 +3,7 @@ const User = require('../src/models/user')
 const Appointment =  require('../src/models/appointment')
 
 const { users, appointment } = require('./seeds/users')
+const usersIds = []
 
 const importUsers = async () => {
     const promises = []
@@ -12,7 +13,8 @@ const importUsers = async () => {
     const idPatient = savedUsers.filter(user => user.type === 'patient')[0]._id
     appointment.doctor = idDoctor
     appointment.patient = idPatient
+    usersIds.push(idDoctor, idPatient)
     await Appointment.create(appointment)
 }
 
-module.exports = { importUsers }
+module.exports = { importUsers, usersIds }
