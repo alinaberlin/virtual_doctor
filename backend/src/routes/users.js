@@ -19,6 +19,13 @@ router.get('/', async(req, res) => {
   res.send(await User.find(query))
 });
 
+router.get('/:id', async (req, res) => {
+  const user = await User.findById(req.params.id)
+  if (user) res.send(user)
+  else res.sendStatus(404)
+
+})
+
 /* Post create a user */
 
 router.post('/', async(req, res) => {

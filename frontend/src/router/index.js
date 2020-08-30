@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import UserList from '../views/user-list.vue'
+import AppointmentList from '../views/appointment-list.vue'
 
 Vue.use(VueRouter)
 
@@ -11,14 +12,15 @@ const routes = [
     component: UserList
   },
   {
-    path: '/appoitments',
-    name: 'AppoitmentList',
+    path: '/appointments',
+    name: 'AppointmentList',
     component: AppointmentList
   },
-  { /*appointment route */
+  {
+    /*appointment route */
     path: '/appointments/:id',
     name: 'AppointmentDetail',
-    component: () => import('../views/appoitment-detail.vue')
+    component: () => import('../views/appointment-detail.vue')
   },
   {
     path: '/users/:id',
