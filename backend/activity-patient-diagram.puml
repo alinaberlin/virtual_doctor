@@ -1,0 +1,19 @@
+@startuml
+
+start
+
+:Log in;
+:Fill out the form;
+:Make appointment;
+:Efectuate the payment;
+:Send previous diagnostic documents;
+if(user what to cancel appointment) then(yes)
+    :Cancel Appointment;
+    stop
+else (no)
+    :Modify Appointment;
+endif
+    :Initiate a call with Doctor/Psychologist;
+stop
+
+@enduml

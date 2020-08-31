@@ -1,0 +1,13 @@
+@startuml
+
+start
+:Log in session;
+:Conduct session;
+:Establish diagnostic;
+    if (required prescription) then(yes)
+        :Write prescription;
+    else (no)
+    endif
+stop
+
+@enduml
