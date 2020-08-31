@@ -1,0 +1,44 @@
+@startuml
+
+left to right direction
+actor  "Patient" as patient
+
+package "Appointment" {
+usecase "Make appointment" as UC1
+usecase "Cancel appointment" as UC2
+usecase "Send previous diagnostic documents " as UC4
+}
+
+package "Invoice" {
+usecase "Provide payment details" as UC6
+usecase "Pay invoice" as UC5
+}
+
+actor "Doctor/Psychologist" as doctor
+
+package "Appointment" {
+usecase "Organise the calendar(appoitments)" as UC8
+usecase "Cancel appointment" as UC9
+}
+
+package "Session" {
+usecase "Initiate a call with Doctor/Psychologist" as UC3
+usecase "Write prescription" as UC10
+usecase "Establish diagnosis" as UC11
+usecase "Conduct session" as UC12
+}
+patient --> UC1
+patient --> UC2
+patient --> UC3
+patient --> UC4
+patient --> UC5
+patient --> UC6
+doctor --> UC8
+doctor --> UC9
+doctor --> UC10
+doctor --> UC11
+doctor --> UC12
+doctor -left-> UC3
+
+
+@enduml
