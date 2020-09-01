@@ -1,0 +1,26 @@
+@startuml
+
+actor Patient
+actor Doctor
+participant "Appointment" as A
+participant "Invoice" as B
+participant "Payment" as C
+participant "Session" as D
+
+Patient --> A: Make an appointment
+activate A
+A --> B: Create an Invoice
+activate B
+B --> C: Pay invoice
+C --> B: Set invoice state to payed
+B --> A: Confirm appoinment
+A --> Patient: Appoinment confirmation
+A --> Doctor: Notify doctor
+activate D
+Doctor --> D: Start Streaming
+Patient --> D: Join Streaming Session
+Doctor --> D: Finalize session
+Doctor --> D: Write diagnostic
+D --> Patient: Send diagnostic
+
+@enduml
