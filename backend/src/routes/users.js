@@ -6,12 +6,15 @@ const User = require('../models/user')
 /* GET users listing. */
 router.get('/', async(req, res) => {
   // res.send('respond with a resource');
-  const query ={}
+  const query = {}
+  if (req.query.email) {
+    query.email = req.query.email
+  }
   if (req.query.firstName) {
     query.firstName = req.query.firstName
   }
   if (req.query.lastName) {
-    query.firstName = req.query.lastName
+    query.lastName = req.query.lastName
   }
   if (req.query.phoneNumber) {
     query.phoneNumber= req.query.phoneNumber
