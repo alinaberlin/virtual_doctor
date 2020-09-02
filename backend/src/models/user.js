@@ -15,19 +15,21 @@ const user = new mongoose.Schema({
   email: {
     type: String,
     required: true,
+    unique: true,
   },
-  password:{
+  password: {
     type: String,
-    required:true,
+    required: true,
   },
   phoneNumber: {
-    type:Number,
-    required:true
+    type: Number,
+    required: true,
+    unique:true
   },
   type: {
     type: String,
-    required:true
-  }
+    required: true,
+  },
 })
 user.plugin(autopopulate)
 const User = mongoose.model('User', user)
