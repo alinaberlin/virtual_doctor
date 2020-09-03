@@ -3,4 +3,6 @@ node_modules
 .eslintrc.json
 .prettierignore
 .prettierrc
-Dockerfile
+test
+jest.config.js
+jest.setup.js

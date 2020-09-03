@@ -17,24 +17,29 @@ const paymentDetails = new mongoose.Schema({
   },
   type: {
     type: String,
+    enum: ['CC', 'PayPal', 'SEPA'],
     required: true,
   },
   expiringMonth: {
-    type: String,
+    type: Number,
+    min: 1,
+    max: 12,
     required: true,
   },
   expiringYear: {
-    type: Date,
+    type: Number,
+    min: 2020,
+    max: 2030,
     required: true,
   },
   lastFourDigits: {
-    type: Date,
+    type: String,
     required: true,
   },
   patient: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'User',
-    autopopulate:true
+    autopopulate: true,
   },
 })
 paymentDetails.plugin(autopopulate)

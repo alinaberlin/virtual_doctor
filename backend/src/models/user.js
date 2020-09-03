@@ -30,6 +30,8 @@ const user = new mongoose.Schema({
     type: String,
     required: true,
   },
+  appointments: [
+    { type: mongoose.Schema.Types.ObjectId, ref: 'Appointment' }]
 })
 user.plugin(autopopulate)
 const User = mongoose.model('User', user)

@@ -9,7 +9,8 @@ const router = express.Router()
 
 /* Create a invoice */
 router.post('/invoice', async (req, res) => {
-    const { sessionId } = { ...req.body }
+/* const { sessionId } = { ...req.body } */
+    const { sessionId } = req.body
     const session = await Session.findById(sessionId)
     const price = calculateSessionPrice(session, 10)
     const invoice = await createInvoice(session, price)
