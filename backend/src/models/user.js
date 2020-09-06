@@ -28,6 +28,7 @@ const user = new mongoose.Schema({
   },
   type: {
     type: String,
+    enum: ['Doctor', 'Patient'],
     required: true,
   },
   appointments: [

@@ -13,10 +13,12 @@ const appointmentSchema = new mongoose.Schema({
   },
   duration: {
     type: Number,
-    required: true
+    required: true,
+    enum: [30, 40]
   },
   type: {
     type: String,
+    enum:['Establish diagnostic', 'Check up'],
     required: true,
   },
   doctor: {

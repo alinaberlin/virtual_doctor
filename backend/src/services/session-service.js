@@ -3,5 +3,5 @@ const calculateSessionPrice = (session, pricePerMinute) => {
   const price = appointment.duration * pricePerMinute
   return price
 }
-
+//* should limited in appoitment js
 module.exports = { calculateSessionPrice }
