@@ -11,7 +11,7 @@ export default {
     }
   },
   async created() {
-    const userRequest = await axios.get(`/api/users/${this.$route.params.id}`)
+    const userRequest = await axios.get(`${process.env.VUE_APP_BASE_URL}/api/users/${this.$route.params.id}`)
     this.user = userRequest.data
   }
 }

@@ -10,7 +10,7 @@ export default {
     }
   },
   async created() {
-    const usersRequest = await axios.get(`/api/users`)
+    const usersRequest = await axios.get(`${process.env.VUE_APP_BASE_URL}/api/users`)
     console.log('boule', usersRequest.data)
     this.users = usersRequest.data
   }
