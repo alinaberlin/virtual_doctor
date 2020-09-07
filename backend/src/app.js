@@ -4,12 +4,11 @@ const express = require('express')
 const path = require('path')
 const cookieParser = require('cookie-parser')
 const logger = require('morgan')
-
+const cors = require('cors')
 const indexRouter = require('./routes/index')
 const usersRouter = require('./routes/users')
 const appointmentRouter = require('./routes/appointments')
 const sessionRouter = require('./routes/sessions')
-const cors = require('cors')
 const User = require('./models/user')
 require('./database-connection')
 
@@ -19,8 +18,7 @@ app.use(
     origin: true,
     credentials: true
   })
-
-}
+)
 
 User.create({
   firstName: 'Alina',
@@ -32,8 +30,10 @@ User.create({
 })
 
 // view engine setup
+app.set('trust proxy', 1)
 app.set('views', path.join(__dirname, 'views'))
 app.set('view engine', 'pug')
+
 
 app.use(logger('dev'))
 app.use(express.json())
