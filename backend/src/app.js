@@ -9,10 +9,18 @@ const indexRouter = require('./routes/index')
 const usersRouter = require('./routes/users')
 const appointmentRouter = require('./routes/appointments')
 const sessionRouter = require('./routes/sessions')
+const cors = require('cors')
 const User = require('./models/user')
 require('./database-connection')
 
 const app = express()
+app.use(
+  cors({
+    origin: true,
+    credentials: true
+  })
+
+}
 
 User.create({
   firstName: 'Alina',
