@@ -23,21 +23,4 @@ mongoose
   .then(() => console.log('connection established'))
   .catch(console.log)
 
-/* mongoose
-  .connect(
-    `mongodb+srv://${username}:${password}@cluster0.knvjh.gcp.mongodb.net/${dbName}?retryWrites=true&w=majority`,
-    {
-      useNewUrlParser: true,
-      useUnifiedTopology: true,
-    }
-  )
-  .then(() => console.log('connection established'))
-  .catch(console.log) */
-
-// mongoose
-//   .connect(`mongodb://${dbHost}/${dbName}?retryWrites=true&w=majority`, {
-//     useNewUrlParser: true,
-//     useUnifiedTopology: true,
-//   })
-//   .then(() => console.log('connection established'))
-//   .catch(console.log)
+module.exports = mongoose.connection

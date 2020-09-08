@@ -10,7 +10,9 @@ const usersRouter = require('./routes/users')
 const appointmentRouter = require('./routes/appointments')
 const sessionRouter = require('./routes/sessions')
 const User = require('./models/user')
-require('./database-connection')
+const mongooseConnection = require('./database-connection')
+const session = require('express-session')
+const MongoStore = require('connect-mongo')(session)
 
 const app = express()
 app.use(
@@ -19,7 +21,12 @@ app.use(
     credentials: true
   })
 )
-
+app.use(
+  session({
+    secret: 'thisissupersecuresecretsecuresecret',
+    store: new MongoStore(mongooseConnection),
+  })
+)
 User.create({
   firstName: 'Alina',
   lastName: 'Ghetler',
