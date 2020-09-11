@@ -5,14 +5,15 @@ const path = require('path')
 const cookieParser = require('cookie-parser')
 const logger = require('morgan')
 const cors = require('cors')
+const session = require('express-session')
+const MongoStore = require('connect-mongo')(session)
+const mongooseConnection = require('./database-connection')
 const indexRouter = require('./routes/index')
 const usersRouter = require('./routes/users')
 const appointmentRouter = require('./routes/appointments')
 const sessionRouter = require('./routes/sessions')
 const User = require('./models/user')
-const mongooseConnection = require('./database-connection')
-const session = require('express-session')
-const MongoStore = require('connect-mongo')(session)
+
 
 const app = express()
 app.use(
@@ -24,7 +25,7 @@ app.use(
 app.use(
   session({
     secret: 'thisissupersecuresecretsecuresecret',
-    store: new MongoStore(mongooseConnection),
+    store: new MongoStore({ mongooseConnection, stringify: false}),
   })
 )
 User.create({

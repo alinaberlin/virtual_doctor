@@ -10,7 +10,7 @@ mongoose.set('debug', true)
 if (!connectionString) {
   connectionString = process.env.MONGODB_REMOTE
     ? `mongodb://${dbHost}/${dbName}?retryWrites=true&w=majority`
-    : 'mongodb://localhost:'
+    : 'mongodb://localhost/alina'
 }
 console.log('Connection is', connectionString)
 
