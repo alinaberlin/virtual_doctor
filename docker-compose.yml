@@ -4,7 +4,9 @@ services:
         image: frontend
         build:
             context: frontend
-            dockerfile: Dockerfile
+            dockerfile: dev.Dockerfile
+        environment:
+            - PORT=8080
         labels:
             - 'traefik.enable=true'
             - 'traefik.http.routers.frontend.rule=Host(`virtualdoctor.localhost`)'
@@ -13,6 +15,7 @@ services:
             - 8080
         volumes:
             - ./frontend/src:/app/src
+            - ./frontend/public:/app/public
     backend:
         image: backend
         build:

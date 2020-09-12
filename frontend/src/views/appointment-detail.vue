@@ -11,7 +11,7 @@ export default {
     }
   },
   async created() {
-    const appointmentRequest = await axios.get(`${process.env.VUE_APP_BASE_URL}/api/appointments/${this.$route.params.id}`)
+    const appointmentRequest = await axios.get(`/api/appointments/${this.$route.params.id}`)
     this.appointment = appointmentRequest.data
   }
 }

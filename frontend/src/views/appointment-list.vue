@@ -9,7 +9,7 @@ export default {
     }
   },
   async created() {
-    const appointmentRequest = await axios.get(`${process.env.VUE_APP_BASE_URL}/api/appointment`)
+    const appointmentRequest = await axios.get(`/api/appointment`)
     this.appointments = appointmentRequest.data
   }
 }

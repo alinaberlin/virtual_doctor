@@ -24,8 +24,12 @@ app.use(
 )
 app.use(
   session({
-    secret: 'thisissupersecuresecretsecuresecret',
-    store: new MongoStore({ mongooseConnection, stringify: false}),
+    secret: ['thisissupersecuresecretsecuresecret', 'thisissupersecuresecretsecuresecret'],
+    store: new MongoStore({ mongooseConnection, stringify: false }),
+    cookie: {
+      maxAge: 30 * 24 * 60 * 60 * 1000,
+      path: '/api',
+    }
   })
 )
 User.create({
@@ -37,6 +41,8 @@ User.create({
   type: 'patient',
 })
 
+
+
 // view engine setup
 app.set('trust proxy', 1)
 app.set('views', path.join(__dirname, 'views'))
@@ -47,6 +53,14 @@ app.use(logger('dev'))
 app.use(express.json())
 app.use(express.urlencoded({ extended: false }))
 app.use(cookieParser())
+
+app.use('/api', (req, res, next) => {
+  req.session.viewCount = req.session.viewCount || 0
+  // eslint-disable-next-line no-plusplus
+  req.session.viewCount++
+  next()
+})
+
 app.use(express.static(path.join(__dirname, 'public')))
 
 app.use('/api/', indexRouter)
