@@ -13,6 +13,7 @@ const usersRouter = require('./routes/users')
 const appointmentRouter = require('./routes/appointments')
 const sessionRouter = require('./routes/sessions')
 const User = require('./models/user')
+const accountsRouter =require('./routes/accounts')
 
 
 const app = express()
@@ -28,7 +29,7 @@ app.use(
     store: new MongoStore({ mongooseConnection, stringify: false }),
     cookie: {
       maxAge: 30 * 24 * 60 * 60 * 1000,
-      path: '/api',
+      path: '/api'
     }
   })
 )
@@ -64,6 +65,7 @@ app.use('/api', (req, res, next) => {
 app.use(express.static(path.join(__dirname, 'public')))
 
 app.use('/api/', indexRouter)
+app.use('/api/account', accountsRouter)
 app.use('/api/users', usersRouter)
 app.use('/api/appointment', appointmentRouter)
 app.use('/api/session', sessionRouter)
