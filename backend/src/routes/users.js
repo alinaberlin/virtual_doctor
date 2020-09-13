@@ -33,7 +33,6 @@ router.get('/init/initialize', async (req, res) => {
     lastName: 'Ghetler',
     phoneNumber: 1232,
     type: 'doctor',
-    age: 35,
     email: 'alina@gmai.com',
   })
   await alina.setPassword('test')
