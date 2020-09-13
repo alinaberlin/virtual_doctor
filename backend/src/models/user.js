@@ -2,8 +2,9 @@ const mongoose = require('mongoose')
 
 const autopopulate = require('mongoose-autopopulate')
 
+const passportLocalMongoose = require('passport-local-mongoose')
 
-const user = new mongoose.Schema({
+const userSchema = new mongoose.Schema({
   firstName: {
     type: String,
     required: true,
@@ -34,8 +35,13 @@ const user = new mongoose.Schema({
   appointments: [
     { type: mongoose.Schema.Types.ObjectId, ref: 'Appointment' }]
 })
-user.plugin(autopopulate)
-const User = mongoose.model('User', user)
+userSchema.plugin(autopopulate)
+const User = mongoose.model('User', userSchema)
+userSchema.plugin(passportLocalMongoose, {
+  usernameField: "email",
+  
+})
+
 module.exports = User
 
 

@@ -7,7 +7,9 @@ const logger = require('morgan')
 const cors = require('cors')
 const session = require('express-session')
 const MongoStore = require('connect-mongo')(session)
+const passport = require('passport')
 const mongooseConnection = require('./database-connection')
+
 const indexRouter = require('./routes/index')
 const usersRouter = require('./routes/users')
 const appointmentRouter = require('./routes/appointments')
@@ -33,6 +35,11 @@ app.use(
     }
   })
 )
+
+app.use(passport.initialize())
+app.use(passport.session())
+
+
 User.create({
   firstName: 'Alina',
   lastName: 'Ghetler',

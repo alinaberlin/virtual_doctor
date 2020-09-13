@@ -2,7 +2,7 @@ const mongoose = require('mongoose')
 const autopopulate = require('mongoose-autopopulate')
 
 
-const paymentDetails = new mongoose.Schema({
+const paymentDetailsSchema = new mongoose.Schema({
   address: {
     type: String,
     required: true,
@@ -42,8 +42,8 @@ const paymentDetails = new mongoose.Schema({
     autopopulate: true,
   },
 })
-paymentDetails.plugin(autopopulate)
-const PaymentDetails = mongoose.model('PaymentDetails', paymentDetails)
+paymentDetailsSchema.plugin(autopopulate)
+const PaymentDetails = mongoose.model('PaymentDetails', paymentDetailsSchema)
 module.exports = PaymentDetails
 // class PaymentDetails {
 //   constructor(id, address, name, paymentReference, type, expiringMonth, expiringYear, lastFourDigits, patient) {
