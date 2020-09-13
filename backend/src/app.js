@@ -39,15 +39,10 @@ app.use(
 app.use(passport.initialize())
 app.use(passport.session())
 
+passport.use(User.createStrategy())
 
-User.create({
-  firstName: 'Alina',
-  lastName: 'Ghetler',
-  email: 'alina@cucu.com',
-  password: 'ccucu',
-  phoneNumber: 12345,
-  type: 'patient',
-})
+passport.serializeUser(User.serializeUser())
+passport.deserializeUser(User.deserializeUser())
 
 
 

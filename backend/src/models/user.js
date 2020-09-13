@@ -25,7 +25,7 @@ const userSchema = new mongoose.Schema({
   phoneNumber: {
     type: Number,
     required: true,
-    unique:true
+    unique: true
   },
   type: {
     type: String,
@@ -36,11 +36,11 @@ const userSchema = new mongoose.Schema({
     { type: mongoose.Schema.Types.ObjectId, ref: 'Appointment' }]
 })
 userSchema.plugin(autopopulate)
-const User = mongoose.model('User', userSchema)
 userSchema.plugin(passportLocalMongoose, {
-  usernameField: "email",
-  
+  usernameField: 'email',
 })
+const User = mongoose.model('User', userSchema)
+
 
 module.exports = User
 
