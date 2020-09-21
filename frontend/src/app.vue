@@ -6,7 +6,6 @@ export default {
     console.log((await axios.get('/api/account/session')).data)
   }
 }
-
 </script>
 
 <template lang="pug">

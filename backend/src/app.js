@@ -16,7 +16,7 @@ const appointmentRouter = require('./routes/appointments')
 const sessionRouter = require('./routes/sessions')
 const User = require('./models/user')
 const accountsRouter =require('./routes/accounts')
-
+const authRouter = require('./routes/auth')
 
 const app = express()
 app.use(
@@ -71,7 +71,7 @@ app.use('/api/account', accountsRouter)
 app.use('/api/users', usersRouter)
 app.use('/api/appointment', appointmentRouter)
 app.use('/api/session', sessionRouter)
-
+app.use('/api/auth', authRouter)
 // catch 404 and forward to error handler
 app.use((req, res, next) => {
   next(createError(404))
