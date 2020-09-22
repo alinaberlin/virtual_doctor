@@ -2,6 +2,7 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import UserList from '../views/user-list.vue'
 import AppointmentList from '../views/appointment-list.vue'
+import Login from '../views/login.vue'
 
 Vue.use(VueRouter)
 
@@ -10,6 +11,12 @@ const routes = [
     path: '/',
     name: 'UserList',
     component: UserList
+  },
+  
+  {
+    path: '/login',
+    name: 'Login',
+    component: Login
   },
   {
     path: '/appointments',
