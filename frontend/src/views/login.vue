@@ -16,5 +16,31 @@
 import router from "../router";
 import axios from "axios";
 import { mapState, mapActions } from "vuex";
+export default {
+    name: "Login",
+    computed: {
+        ...mapState(["currentUser"])
+    },
+    data() {
+        return {
+            email: "",
+            password: ""
+            };
+    },
+    methods: {
+        ...mapActions(["login"]),
+        doLogin(e) {
+            e.preventDefault();
+            let email = e.target.elements.email.value;
+            let password = e.target.elements.password.value;
+
+            let data = {
+                email: email,
+                password: password
+            };
+            this.login(data);
+        }
+    }
+};
 
 </script>
