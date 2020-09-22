@@ -27,7 +27,7 @@ const invoiceSchema = new mongoose.Schema({
   session: {
     type: mongoose.Schema.Types.ObjectId,
     ref:'Session',
-   autopopulate:true
+  autopopulate:true
   }
 })
 invoiceSchema.plugin(autopopulate)

@@ -8,6 +8,7 @@ const cors = require('cors')
 const session = require('express-session')
 const MongoStore = require('connect-mongo')(session)
 const passport = require('passport')
+const localStrategy =require('passport-local')
 const mongooseConnection = require('./database-connection')
 
 const indexRouter = require('./routes/index')
@@ -15,8 +16,9 @@ const usersRouter = require('./routes/users')
 const appointmentRouter = require('./routes/appointments')
 const sessionRouter = require('./routes/sessions')
 const User = require('./models/user')
-const accountsRouter =require('./routes/accounts')
+const accountsRouter = require('./routes/accounts')
 const authRouter = require('./routes/auth')
+const auth = require('./routes/auth')
 
 const app = express()
 app.use(
@@ -25,6 +27,7 @@ app.use(
     credentials: true
   })
 )
+
 app.use(
   session({
     secret: ['thisissupersecuresecretsecuresecret', 'thisissupersecuresecretsecuresecret'],
@@ -76,7 +79,7 @@ app.use('/api/auth', authRouter)
 app.use((req, res, next) => {
   next(createError(404))
 })
-
+app.use('./auth', auth)
 // error handler
 app.use((err, req, res) => {
   // set locals, only providing error in development

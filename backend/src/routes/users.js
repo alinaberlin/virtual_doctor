@@ -3,6 +3,7 @@ const express = require('express')
 const router = express.Router()
 
 const User = require('../models/user')
+const ensureLogin =require('../middleware/ensure-login')
 /* GET users listing. */
 router.get('/', async (req, res) => {
   // res.send('respond with a resource');
@@ -45,7 +46,7 @@ router.get('/init/initialize', async (req, res) => {
 
 /* Post create a user */
 
-router.post('/', async (req, res) => {
+router.post('/', ensureLogin, async (req, res) => {
   const createdUser = await User.create(req.body)
   res.send(createdUser)
 })

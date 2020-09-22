@@ -8,9 +8,9 @@ services:
         environment:
             - PORT=8080
         labels:
-            - 'traefik.enable=true'
-            - 'traefik.http.routers.frontend.rule=Host(`virtualdoctor.localhost`)'
-            - 'traefik.http.routers.frontend.entrypoints=web'
+            - "traefik.enable=true"
+            - "traefik.http.routers.frontend.rule=Host(`virtualdoctor.localhost`)"
+            - "traefik.http.routers.frontend.entrypoints=web"
         ports:
             - 8080
         volumes:
@@ -20,7 +20,7 @@ services:
         image: backend
         build:
             context: backend
-            dockerfile: Dockerfile
+            dockerfile: dev.Dockerfile
         environment:
             - MONGODB_USERNAME
             - MONGODB_PASSWORD
@@ -29,9 +29,9 @@ services:
             - MONGODB_REMOTE=1
             - MONGODB_CONNECTION_STRING=mongodb://mongo/virtual_doctor
         labels:
-            - 'traefik.enable=true'
-            - 'traefik.http.routers.backend.rule=(Host(`virtualdoctor.localhost`) && PathPrefix(`/api`))'
-            - 'traefik.http.routers.backend.entrypoints=web'
+            - "traefik.enable=true"
+            - "traefik.http.routers.backend.rule=(Host(`virtualdoctor.localhost`) && PathPrefix(`/api`))"
+            - "traefik.http.routers.backend.entrypoints=web"
         ports:
             - 3000
             - 35729:35729
@@ -44,12 +44,12 @@ services:
     load-balancer:
         image: traefik:v2.2
         command:
-            - '--api.insecure=true'
-            - '--providers.docker=true'
-            - '--providers.docker.exposedbydefault=false'
-            - '--entrypoints.web.address=:80'
+            - "--api.insecure=true"
+            - "--providers.docker=true"
+            - "--providers.docker.exposedbydefault=false"
+            - "--entrypoints.web.address=:80"
         ports:
-        - '80:80'
-        - '8080:8080'
+            - "80:80"
+            - "8080:8080"
         volumes:
-        - '/var/run/docker.sock:/var/run/docker.sock:ro'
+            - "/var/run/docker.sock:/var/run/docker.sock:ro"
