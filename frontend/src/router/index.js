@@ -3,6 +3,7 @@ import VueRouter from 'vue-router'
 import UserList from '../views/user-list.vue'
 import AppointmentList from '../views/appointment-list.vue'
 import Login from '../views/login.vue'
+import Registration from '../views/registration.vue'
 
 Vue.use(VueRouter)
 

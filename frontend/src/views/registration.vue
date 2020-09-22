@@ -4,7 +4,7 @@ import { mapState, mapActions } from 'vuex'
 export default {
     name: 'registration',
     computed: {
-    ...mapState(['userDetails', 'sports'])
+    ...mapState(['userDetails'])
     },
     data() {
     return {
@@ -19,8 +19,8 @@ export default {
     methods: {
     ...mapActions(['createUser']),
     saveUser() {
-        const { firstName, secondName, email, password, phoneNumber, type} = this
-        this.createUser({ firstName, secondName, email, password, phoneNumber})
+        const { firstName, lastName, email, password, phoneNumber, type} = this
+        this.createUser({ firstName, lastName, email, password, phoneNumber})
     }
     },
     created() {}
@@ -35,7 +35,7 @@ main
     input(type="text" v-model="firstName" placeholder="first name" name="firstName" class="form-control")
     div(class="form-group")
     label(for="lastName") Last name
-    input(type="text" v-model="secondName" placeholder="last name" name="lastName" class="form-control")
+    input(type="text" v-model="lastName" placeholder="last name" name="lastName" class="form-control")
     div(class="form-group")
     label(for="email") Email
     input(type="email" v-model="email" placeholder="email" class="form-control")
@@ -48,8 +48,8 @@ main
     div(class="form-group")
     label(for="type") Type
     select(v-model="type" name="type" class="form-control")
-    option(value='patient') Patient
-    option(value='doctor') Doctor
+        option(value='patient') Patient
+        option(value='doctor') Doctor
     button.post-user-button(@click="saveUser()" class="btn btn-primary") Register
     div
 </template>
