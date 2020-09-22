@@ -13,5 +13,6 @@
 </template>
 
 <script>
+import router from "../router";
 
 </script>
