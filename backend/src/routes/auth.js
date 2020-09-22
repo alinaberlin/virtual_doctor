@@ -19,6 +19,13 @@ router.post('/login', (req, res, next) => {
         })
     })(req, res, next)
 })
+router.get('/logout', function (req, res) {
+    req.logout()
+
+    console.log('logged out')
+
+    return res.send()
+})
 
 router.post('/register', (req, res, next) => {
     User.register({ username: req.body.firstName }, req.body.password, (err, response) => {
