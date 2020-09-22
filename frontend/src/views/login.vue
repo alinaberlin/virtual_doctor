@@ -14,5 +14,7 @@
 
 <script>
 import router from "../router";
+import axios from "axios";
+import { mapState, mapActions } from "vuex";
 
 </script>
