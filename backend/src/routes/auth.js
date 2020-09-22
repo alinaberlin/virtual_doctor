@@ -9,7 +9,7 @@ router.get('/login', (req, res, next) => {
 })
 
 router.post('/register', (req, res, next) => {
-    User.register({ username: req.body.firstName }, req.body.password, (err, account) => {
+    User.register({ username: req.body.firstName }, req.body.password, (err, response) => {
     res.send('OK')
 })
 })
