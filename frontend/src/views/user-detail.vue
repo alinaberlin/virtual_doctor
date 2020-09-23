@@ -19,5 +19,6 @@ export default {
 <template lang="pug">
   .about
     <h1>This is user detail page</h1>
-    user-card(:user="user")
+    
+
 </template>

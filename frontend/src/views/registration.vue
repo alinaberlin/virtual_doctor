@@ -13,14 +13,15 @@ export default {
         email: '',
         password: '',
         phoneNumber: '',
+        photo: '',
         type: '',
     }
     },
     methods: {
     ...mapActions(['createUser']),
     saveUser() {
-        const { firstName, lastName, email, password, phoneNumber, type} = this
-        this.createUser({ firstName, lastName, email, password, phoneNumber})
+        const { firstName, lastName, email, password, phoneNumber, type, photo} = this
+        this.createUser({ firstName, lastName, email, password,type, phoneNumber, photo})
     }
     },
     created() {}
@@ -45,6 +46,8 @@ main
     div(class="form-group")
     label(for="phoneNumber") phoneNumber
     input(type="text" v-model="phoneNumber" placeholder="Phone Number" name="phoneNumber" class="form-control")
+    div(class="form-group")
+    input(type="text" v-model="photo" placeholder="photo" name="photo" class="form-control")
     div(class="form-group")
     label(for="type") Type
     select(v-model="type" name="type" class="form-control")

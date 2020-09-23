@@ -1,11 +1,11 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-import axios from 'axios'
+import transport from 'axios'
 import router from '../router'
 
 
-axios.defaults.baseURL = process.env.VUE_APP_BASE_URL
-axios.default.withCredentials = true
+transport.defaults.baseURL = process.env.VUE_APP_BASE_URL
+transport.default.withCredentials = true
 
 Vue.use(Vuex)
 
@@ -48,19 +48,25 @@ export default new Vuex.Store({
           router.push("/login");
           return;
         }
-        const result = await transport.get(`${apiUrl}/api/users`);
+        const result = await transport.get(`/api/users`);
         commit("SET_USERS", result.data);
       },
       async login({ commit }, loginData) {
         try {
-          const result = await transport.post(`${apiUrl}/api/auth/login`, loginData);
+          const result = await transport.post(`/api/auth/login`, loginData);
           commit("SET_CURRENT_USER", result.data);
           router.push("/users");
         } catch (e) {
           commit("SET_CURRENT_USER", undefined);
           console.error("Invalid login data", e);
         }
-      }
+      },
+      async createUser({ commit }, userDetails) {
+            this.state.userDetails = userDetails;
+            const result = await transport.post(`/api/users`, this.state.userDetails);
+            commit("SAVE_NEW_USER", result.data);
+            router.push("/login");
+        },
     },
     modules: {}
   })
