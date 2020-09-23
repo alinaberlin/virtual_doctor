@@ -9,7 +9,8 @@ export default {
 </script>
 
 <template lang="pug">
-  #app
+  v-app
+    v-container
     #nav
       router-link(to="/") User
     router-view
