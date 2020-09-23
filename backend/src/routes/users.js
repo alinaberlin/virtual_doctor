@@ -46,7 +46,7 @@ router.get('/init/initialize', async (req, res) => {
 
 /* Post create a user */
 
-router.post('/', ensureLogin, async (req, res) => {
+router.post('/', async (req, res) => {
   const createdUser = await User.create(req.body)
   res.send(createdUser)
 })
