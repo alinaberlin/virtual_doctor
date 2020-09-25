@@ -7,7 +7,8 @@ export default {
 
 <template lang="pug">
 .box
-  h1 {{ user.firstName }} ({{ user.lastName }})
+  h1 {{ user.firstName }} {{ user.lastName }}
+  h1 {{ user.phoneNumber }} {{ user.phoneNumber }}
 </template>
 
 <style lang="scss" scoped>

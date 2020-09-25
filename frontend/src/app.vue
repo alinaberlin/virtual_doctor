@@ -12,6 +12,9 @@ export default {
   #app
     #nav
       router-link(to="/") User
+      router-link(to="/login") Login
+      
+
     router-view
 </template>
 
