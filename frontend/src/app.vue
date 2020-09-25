@@ -13,8 +13,8 @@ export default {
     #nav
       router-link(to="/") User
       router-link(to="/login") Login
-      
-
+      router-link(to="/registration") Registration
+      router-link(to="/appointments") User Appointments
     router-view
 </template>
 
